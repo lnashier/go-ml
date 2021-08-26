@@ -1,0 +1,72 @@
+{
+  "schema": {
+    "target": "Vent",
+    "features": [
+      "O2",
+      "CO2"
+    ]
+  },
+  "ops": [
+    {
+      "type": "plot",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem3/babybirds.csv",
+          "charts": [
+            "scatter",
+            "histogram"
+          ]
+        },
+        "output": {
+          "plot": "./linear/problem3/scratch/plot"
+        }
+      }
+    },
+    {
+      "type": "split",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem3/babybirds.csv"
+        },
+        "output": {
+          "training": "./linear/problem3/scratch/data/training.csv",
+          "test": "./linear/problem3/scratch/data/test.csv"
+        }
+      }
+    },
+    {
+      "type": "fit",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem3/scratch/data/training.csv",
+          "opts": {
+            "loss": "rss",
+            "epochs": 1000,
+            "batch": 0.01,
+            "lr": 0.001
+          }
+        },
+        "output": {
+          "report": "./linear/problem3/scratch/report/train.json",
+          "model": "./linear/problem3/scratch/model.json"
+        }
+      }
+    },
+    {
+      "type": "test",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem3/scratch/data/test.csv",
+          "model": "./linear/problem3/scratch/model.json"
+        },
+        "output": {
+          "report": "./linear/problem3/scratch/report/test.json"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": {
+    "target": "T_degC",
+    "features": [
+      "Salnty"
+    ]
+  },
+  "ops": [
+    {
+      "type": "plot",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem2/bottle_aa.csv",
+          "charts": [
+            "scatter",
+            "histogram"
+          ]
+        },
+        "output": {
+          "plot": "./linear/problem2/scratch/plot"
+        }
+      }
+    },
+    {
+      "type": "split",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem2/bottle_aa.csv"
+        },
+        "output": {
+          "training": "./linear/problem2/scratch/data/training.csv",
+          "test": "./linear/problem2/scratch/data/test.csv"
+        }
+      }
+    },
+    {
+      "type": "fit",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem2/scratch/data/training.csv",
+          "opts": {
+            "loss": "mse",
+            "epochs": 10000,
+            "batch": 0.01,
+            "lr": 0.001
+          }
+        },
+        "output": {
+          "report": "./linear/problem2/scratch/report/train.json",
+          "model": "./linear/problem2/scratch/model.json"
+        }
+      }
+    },
+    {
+      "type": "test",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem2/scratch/data/test.csv",
+          "model": "./linear/problem2/scratch/model.json"
+        },
+        "output": {
+          "report": "./linear/problem2/scratch/report/test.json"
+        }
+      }
+    }
+  ]
+}

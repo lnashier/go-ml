@@ -1,0 +1,68 @@
+{
+  "schema": {
+    "target": "",
+    "features": []
+  },
+  "ops": [
+    {
+      "type": "plot",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./logistic/problem1/XYZ.csv",
+          "charts": [
+            "histogram"
+          ]
+        },
+        "output": {
+          "plot": "./logistic/problem1/scratch/plot"
+        }
+      }
+    },
+    {
+      "type": "split",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./logistic/problem1/XYZ.csv"
+        },
+        "output": {
+          "training": "./logistic/problem1/scratch/data/training.csv",
+          "test": "./logistic/problem1/scratch/data/test.csv"
+        }
+      }
+    },
+    {
+      "type": "fit",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./logistic/problem1/scratch/data/training.csv",
+          "opts": {
+            "loss": "ce",
+            "epochs": 10000,
+            "batch": 0.1,
+            "lr": 0.4
+          }
+        },
+        "output": {
+          "report": "./logistic/problem1/scratch/report/train.json",
+          "model": "./logistic/problem1/scratch/model.json"
+        }
+      }
+    },
+    {
+      "type": "test",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./logistic/problem1/scratch/data/test.csv",
+          "model": "./logistic/problem1/scratch/model.json"
+        },
+        "output": {
+          "report": "./logistic/problem1/scratch/report/test.json"
+        }
+      }
+    }
+  ]
+}
