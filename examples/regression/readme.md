@@ -45,7 +45,8 @@ following:
 
 #### plot
 
-`plot` folder contains various plots that were requested in `cfg.json`. For instance linear/problem1 has the following plots:
+`plot` folder contains various plots that were requested in `cfg.json`. For instance linear/problem1 has the following
+plots:
 
 * hist-tv
 * scatter-sales-tv

@@ -2,7 +2,9 @@
   "schema": {
     "target": "sales",
     "features": [
-      "tv"
+      "tv",
+      "radio",
+      "newspaper"
     ]
   },
   "ops": [
@@ -43,7 +45,7 @@
           "data": "./linear/problem1/scratch/data/training.csv",
           "opts": {
             "loss": "mse",
-            "epochs": 1000000,
+            "epochs": 100000,
             "batch": 0.01,
             "lr": 0.01
           }
