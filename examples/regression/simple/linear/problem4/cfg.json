@@ -1,0 +1,71 @@
+{
+  "schema": {
+    "target": "MEDV",
+    "features": [
+      "RM",
+      "LSTAT"
+    ]
+  },
+  "ops": [
+    {
+      "type": "plot",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem4/housing.csv",
+          "charts": [
+            "histogram"
+          ]
+        },
+        "output": {
+          "plot": "./linear/problem4/scratch/plot"
+        }
+      }
+    },
+    {
+      "type": "split",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem4/housing.csv"
+        },
+        "output": {
+          "training": "./linear/problem4/scratch/data/training.csv",
+          "test": "./linear/problem4/scratch/data/test.csv"
+        }
+      }
+    },
+    {
+      "type": "fit",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem4/scratch/data/training.csv",
+          "opts": {
+            "loss": "mse",
+            "epochs": 100000,
+            "batch": 0.01,
+            "lr": 0.01
+          }
+        },
+        "output": {
+          "report": "./linear/problem4/scratch/report/train.json",
+          "model": "./linear/problem4/scratch/model.json"
+        }
+      }
+    },
+    {
+      "type": "test",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem4/scratch/data/test.csv",
+          "model": "./linear/problem4/scratch/model.json"
+        },
+        "output": {
+          "report": "./linear/problem4/scratch/report/test.json"
+        }
+      }
+    }
+  ]
+}

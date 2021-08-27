@@ -1,0 +1,71 @@
+{
+  "schema": {
+    "target": "price",
+    "features": [
+      "grade"
+    ]
+  },
+  "ops": [
+    {
+      "type": "plot",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem5/kc_house_data.csv",
+          "charts": [
+            "histogram"
+          ]
+        },
+        "output": {
+          "plot": "./linear/problem5/scratch/plot"
+        }
+      }
+    },
+    {
+      "type": "split",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem5/kc_house_data.csv",
+          "shuffle": true
+        },
+        "output": {
+          "training": "./linear/problem5/scratch/data/training.csv",
+          "test": "./linear/problem5/scratch/data/test.csv"
+        }
+      }
+    },
+    {
+      "type": "fit",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem5/scratch/data/training.csv",
+          "opts": {
+            "loss": "mse",
+            "epochs": 10000000,
+            "batch": 0.01,
+            "lr": 0.01
+          }
+        },
+        "output": {
+          "report": "./linear/problem5/scratch/report/train.json",
+          "model": "./linear/problem5/scratch/model.json"
+        }
+      }
+    },
+    {
+      "type": "test",
+      "enabled": true,
+      "args": {
+        "input": {
+          "data": "./linear/problem5/scratch/data/test.csv",
+          "model": "./linear/problem5/scratch/model.json"
+        },
+        "output": {
+          "report": "./linear/problem5/scratch/report/test.json"
+        }
+      }
+    }
+  ]
+}
