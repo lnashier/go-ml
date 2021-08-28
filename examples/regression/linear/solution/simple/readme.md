@@ -1,4 +1,4 @@
-# Regression Examples (Config)
+# Regression Examples
 
 These are just some toy examples. They are provided so that you can tweak parameters in `cfg.json` of each example to
 build some more understanding of both SDK and working of regression algorithm.
