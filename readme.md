@@ -3,4 +3,5 @@ This codebase provides an idiomatic approach to training, evaluating and deployi
 Codebase is well commented in an effort to make Gophers aware of contextual concepts and ideas that each program deals
 with.
 
-[Regression Examples](examples/regression/readme.md)
+Linear Regression Examples [Simple](examples/regression/linear/simple/readme.md)
+| [Custom](examples/regression/linear/custom/readme.md)

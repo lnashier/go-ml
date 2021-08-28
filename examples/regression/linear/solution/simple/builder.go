@@ -26,7 +26,7 @@ import (
 //	Split - divide dataset into training and test
 //	Fit - Train the linear regression model
 //	Test - Verify performance of the trained model
-type Builder struct {}
+type Builder struct{}
 
 // Run builds regression model by running through all the ops defined in config
 func (b Builder) Run(cfg *viper.Viper) error {
@@ -214,7 +214,7 @@ func (b Builder) Split(args SplitOpArgs) {
 		}
 		// Enumerate the test indices.
 		for i := 0; i < testNum; i++ {
-			testIdx = append(testIdx, trainingNum + i)
+			testIdx = append(testIdx, trainingNum+i)
 		}
 	}
 

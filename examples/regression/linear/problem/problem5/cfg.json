@@ -11,13 +11,13 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem5/kc_house_data.csv",
+          "data": "problem5/kc_house_data.csv",
           "charts": [
             "histogram"
           ]
         },
         "output": {
-          "plot": "./linear/problem5/scratch/plot"
+          "plot": "problem5/scratch/plot"
         }
       }
     },
@@ -26,12 +26,12 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem5/kc_house_data.csv",
+          "data": "problem5/kc_house_data.csv",
           "shuffle": true
         },
         "output": {
-          "training": "./linear/problem5/scratch/data/training.csv",
-          "test": "./linear/problem5/scratch/data/test.csv"
+          "training": "problem5/scratch/data/training.csv",
+          "test": "problem5/scratch/data/test.csv"
         }
       }
     },
@@ -40,7 +40,7 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem5/scratch/data/training.csv",
+          "data": "problem5/scratch/data/training.csv",
           "opts": {
             "loss": "mse",
             "epochs": 10000000,
@@ -49,8 +49,8 @@
           }
         },
         "output": {
-          "report": "./linear/problem5/scratch/report/train.json",
-          "model": "./linear/problem5/scratch/model.json"
+          "report": "problem5/scratch/report/train.json",
+          "model": "problem5/scratch/model.json"
         }
       }
     },
@@ -59,11 +59,11 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem5/scratch/data/test.csv",
-          "model": "./linear/problem5/scratch/model.json"
+          "data": "problem5/scratch/data/test.csv",
+          "model": "problem5/scratch/model.json"
         },
         "output": {
-          "report": "./linear/problem5/scratch/report/test.json"
+          "report": "problem5/scratch/report/test.json"
         }
       }
     }
