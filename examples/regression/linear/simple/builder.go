@@ -21,15 +21,15 @@ import (
 	"path"
 )
 
-// Builder provides basic operations to train a linear regression model:
+// Planner provides basic operations to train a linear regression model:
 //	Plot - create graphs
 //	Split - divide dataset into training and test
 //	Fit - Train the linear regression model
 //	Test - Verify performance of the trained model
-type Builder struct{}
+type Planner struct{}
 
 // Run builds regression model by running through all the ops defined in config
-func (b Builder) Run(cfg *viper.Viper) error {
+func (p Planner) Run(cfg *viper.Viper) error {
 	fmt.Println("Regression starting ...")
 	defer fmt.Println("Regression done !")
 
@@ -50,19 +50,19 @@ func (b Builder) Run(cfg *viper.Viper) error {
 		case op.Type == OpTypePlot && op.Enabled:
 			var args PlotOpArgs
 			zson.Unmarshal(zson.Marshal(op.Args), &args)
-			b.Plot(schema, args)
+			p.Plot(schema, args)
 		case op.Type == OpTypeSplit && op.Enabled:
 			var args SplitOpArgs
 			zson.Unmarshal(zson.Marshal(op.Args), &args)
-			b.Split(args)
+			p.Split(args)
 		case op.Type == OpTypeFit && op.Enabled:
 			var args FitOpArgs
 			zson.Unmarshal(zson.Marshal(op.Args), &args)
-			b.Fit(schema, args)
+			p.Fit(schema, args)
 		case op.Type == OpTypeTest && op.Enabled:
 			var args TestOpArgs
 			zson.Unmarshal(zson.Marshal(op.Args), &args)
-			b.Test(schema, args)
+			p.Test(schema, args)
 		}
 	}
 
@@ -70,7 +70,7 @@ func (b Builder) Run(cfg *viper.Viper) error {
 }
 
 // Plot draws scatter plots for each feature against target
-func (b Builder) Plot(schema data.Schema, args PlotOpArgs) {
+func (p Planner) Plot(schema data.Schema, args PlotOpArgs) {
 	fmt.Println("Plotting ...")
 	defer fmt.Println("Plotted !")
 
@@ -160,7 +160,7 @@ func (b Builder) Plot(schema data.Schema, args PlotOpArgs) {
 }
 
 // Split divides dataset into 2 parts Training and Testing
-func (b Builder) Split(args SplitOpArgs) {
+func (p Planner) Split(args SplitOpArgs) {
 	fmt.Println("Splitting ...")
 	defer fmt.Println("Split !")
 
@@ -227,7 +227,7 @@ func (b Builder) Split(args SplitOpArgs) {
 }
 
 // Fit trains the regression model with training dataset
-func (b Builder) Fit(schema data.Schema, args FitOpArgs) {
+func (p Planner) Fit(schema data.Schema, args FitOpArgs) {
 	fmt.Println("Fitting ...")
 	defer fmt.Println("Fitted !")
 
@@ -258,7 +258,7 @@ func (b Builder) Fit(schema data.Schema, args FitOpArgs) {
 }
 
 // Test tests the regression model with test dataset
-func (b Builder) Test(schema data.Schema, args TestOpArgs) {
+func (p Planner) Test(schema data.Schema, args TestOpArgs) {
 	fmt.Println("Testing ...")
 	defer fmt.Println("Tested !")
 

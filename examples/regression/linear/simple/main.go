@@ -38,7 +38,7 @@ func main() {
 	wg.Add(1)
 	go func(cfg *viper.Viper) {
 		defer wg.Done()
-		if err := (Builder{}).Run(cfg); err != nil {
+		if err := (Planner{}).Run(cfg); err != nil {
 			fmt.Println(err)
 		}
 	}(cfg)
