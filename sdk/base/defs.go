@@ -13,4 +13,5 @@ type Opts struct {
 	Batch  float64 `json:"batch"`
 	Loss   string  `json:"loss"`
 	Lr     float64 `json:"lr"`
+	Cp     int     `json:"cp"`
 }

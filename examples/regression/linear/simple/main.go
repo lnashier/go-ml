@@ -21,8 +21,8 @@ func setup(prb string) (*viper.Viper, error) {
 }
 
 func main() {
-	fmt.Println("Starting ...")
-	defer fmt.Println("Done !")
+	fmt.Println("Main sarting...")
+	defer fmt.Println("Main done!")
 
 	prb := flag.String("prb", "", "Path to problem dir.")
 

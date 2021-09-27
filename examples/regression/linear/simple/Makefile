@@ -1,4 +1,7 @@
-all: copy build run
+all: clean copy build run
+
+clean:
+	@rm -rf $(prb)/scratch
 
 copy:
 	@mkdir -p $(prb)/scratch/data/ && cp -R ../../data/$(prb)/ $(prb)/scratch/data/

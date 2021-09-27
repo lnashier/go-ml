@@ -30,8 +30,8 @@ type Planner struct{}
 
 // Run builds regression model by running through all the ops defined in config
 func (p Planner) Run(cfg *viper.Viper) error {
-	fmt.Println("Regression starting ...")
-	defer fmt.Println("Regression done !")
+	fmt.Println("Planner starting...")
+	defer fmt.Println("Planner done!")
 
 	var schema data.Schema
 
@@ -196,7 +196,7 @@ func (p Planner) Split(args SplitOpArgs) {
 	if args.Input.Shuffle {
 		// Before splitting, the dataset should be shuffled to avoid having ordered data.
 		// If the data is ordered, training dataset and test dataset could have different behavior.
-		idxes := rand.Perm((trainingNum + testNum))
+		idxes := rand.Perm(trainingNum + testNum)
 		var addToTest bool
 		for _, v := range idxes {
 			if addToTest && len(testIdx) < testNum {
@@ -272,13 +272,15 @@ func (p Planner) Test(schema data.Schema, args TestOpArgs) {
 	zson.Unmarshal(md, &m)
 
 	// Linear regression model
-	var rr regression.Linear
-	rr.Load(m)
+	rr := new(regression.Linear)
 	rr.SetHeader(data.Header{
 		Observed: schema.Target,
 		Vars:     schema.Features,
 	})
+	rr.Load(m)
 	rpt := rr.Measure(csv.Read(schema, args.Input.Data))
+
+	rr.Checkpoint(0, rpt)
 
 	if err := file.Save(args.Output.Report, zson.Marshal(rpt)); err != nil {
 		log.Fatal(err)

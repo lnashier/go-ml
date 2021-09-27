@@ -4,4 +4,5 @@ Codebase is well commented in an effort to make Gophers aware of contextual conc
 with.
 
 ## Examples
+
 * [Linear Regression](examples/regression/linear)

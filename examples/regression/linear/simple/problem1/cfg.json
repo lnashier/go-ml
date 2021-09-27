@@ -29,7 +29,9 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "problem1/scratch/data/sale.csv"
+          "data": "problem1/scratch/data/sale.csv",
+          "shuffle": true,
+          "ratio": 0.8
         },
         "output": {
           "training": "problem1/scratch/data/training.csv",
@@ -47,7 +49,8 @@
             "loss": "mse",
             "epochs": 100000,
             "batch": 0.01,
-            "lr": 0.01
+            "lr": 0.01,
+            "cp": 100000
           }
         },
         "output": {

@@ -11,7 +11,7 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "problem5/kc_house_data.csv",
+          "data": "problem5/scratch/data/kc_house_data.csv",
           "charts": [
             "histogram"
           ]
@@ -26,7 +26,7 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "problem5/kc_house_data.csv",
+          "data": "problem5/scratch/data/kc_house_data.csv",
           "shuffle": true
         },
         "output": {
@@ -45,7 +45,8 @@
             "loss": "mse",
             "epochs": 10000000,
             "batch": 0.01,
-            "lr": 0.01
+            "lr": 0.01,
+            "cp": 100000
           }
         },
         "output": {

@@ -61,13 +61,33 @@ func (r *Regresser) fit(pts []data.Point, h func(w, x *mat.VecDense) float64) er
 	}
 	r.fitted = true
 
-	coeffs, err := base.GD(&r.opts, pts, h)
+	epochs := 0
+	coeffs, err := base.GD(&r.opts, pts, h, func(coeffs []float64) {
+		epochs++
+		if (r.opts.Cp > 0 && epochs%r.opts.Cp == 0) || epochs == r.opts.Epochs {
+			r.intercept = coeffs[0]
+			r.coeffs = coeffs[1:]
+			r.Checkpoint(epochs, r.Measure(pts))
+		}
+	})
+
 	if err != nil {
 		return err
 	}
 	r.intercept = coeffs[0]
 	r.coeffs = coeffs[1:]
+
 	return nil
+}
+
+func (r *Regresser) Checkpoint(epochs int, rpt Report) {
+	fmt.Printf("[Epochs: %d/%d, N: %d, MSE:%.5f, R2: %.5f][", epochs, r.opts.Epochs, rpt.N, rpt.MSE, rpt.R2)
+	m := r.Get()
+	// read vars since map keys shuffle
+	for _, f := range r.header.Vars {
+		fmt.Printf("%s=%.5f,", f, m.Coeffs[f])
+	}
+	fmt.Printf("Intercept=%.5f]\n", m.Intercept)
 }
 
 // Predict calculates the target value using trained model

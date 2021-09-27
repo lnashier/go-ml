@@ -12,13 +12,13 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem4/housing.csv",
+          "data": "problem4/scratch/data/housing.csv",
           "charts": [
             "histogram"
           ]
         },
         "output": {
-          "plot": "./linear/problem4/scratch/plot"
+          "plot": "problem4/scratch/plot"
         }
       }
     },
@@ -27,11 +27,11 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem4/housing.csv"
+          "data": "problem4/scratch/data/housing.csv"
         },
         "output": {
-          "training": "./linear/problem4/scratch/data/training.csv",
-          "test": "./linear/problem4/scratch/data/test.csv"
+          "training": "problem4/scratch/data/training.csv",
+          "test": "problem4/scratch/data/test.csv"
         }
       }
     },
@@ -40,7 +40,7 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem4/scratch/data/training.csv",
+          "data": "problem4/scratch/data/training.csv",
           "opts": {
             "loss": "mse",
             "epochs": 100000,
@@ -49,8 +49,8 @@
           }
         },
         "output": {
-          "report": "./linear/problem4/scratch/report/train.json",
-          "model": "./linear/problem4/scratch/model.json"
+          "report": "problem4/scratch/report/train.json",
+          "model": "problem4/scratch/model.json"
         }
       }
     },
@@ -59,11 +59,11 @@
       "enabled": true,
       "args": {
         "input": {
-          "data": "./linear/problem4/scratch/data/test.csv",
-          "model": "./linear/problem4/scratch/model.json"
+          "data": "problem4/scratch/data/test.csv",
+          "model": "problem4/scratch/model.json"
         },
         "output": {
-          "report": "./linear/problem4/scratch/report/test.json"
+          "report": "problem4/scratch/report/test.json"
         }
       }
     }
